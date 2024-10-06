@@ -31,13 +31,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
 
-        <>
+        <div className="">
           <NavBar />
-          <div className="flex">
+          <div className="flex pt-16">
             <SideBar />
             {children}
           </div>
-        </>
+        </div>
       </body>
     </html>
   );
