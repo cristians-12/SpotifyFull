@@ -11,6 +11,8 @@ export class User {
   password: string;
   @Prop({ type: [Number], default: [] })
   favorites: number[];
+  @Prop({ type: Date, default: Date.now })
+  createdAt: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
