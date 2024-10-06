@@ -9,11 +9,11 @@ export default function Home() {
 
   useEffect(() => {
     console.log(data);
-  }, [data]); // Agrega 'data' como dependencia
+  }, [data]);
 
   return (
     <>
-     <h2>Artistas escuchados:</h2>
+      <h2>Artistas escuchados:</h2>
       <ul className="mt-5 flex">
         {data && data.length > 0 ? (
           data.map((artist) => (
