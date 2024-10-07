@@ -4,6 +4,7 @@ import { Artist } from "../types";
 import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface ArtistCardProps {
     artist: Artist;
@@ -13,7 +14,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
     const [hover, setHover] = useState<boolean>(false);
 
     return (
-        <div
+        <Link href={`/artist/${artist._id}`}
             className="flex relative flex-col justify-center hover:bg-[#1E1E1E] p-3 lg:pb-10 rounded-xl hover:cursor-pointer"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
@@ -31,7 +32,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
             </div>
             <h2 className="text-start mt-5 hover:underline hover:cursor-pointer font-bold">{artist.name}</h2>
             <p className="text-[#606060]">Artist</p>
-        </div>
+        </Link>
     );
 }
 
