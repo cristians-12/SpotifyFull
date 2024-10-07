@@ -43,4 +43,17 @@ export class ArtistsService {
     }
     return { message: 'Artist deleted.' };
   }
+
+  async updateArtist(id: string, data: Partial<Artist>) {
+    const updatedArtist = await this.artistModel
+      .findByIdAndUpdate(id, data, {
+        new: true,
+        runValidators: true,
+      })
+      .exec();
+    if (!updatedArtist) {
+      return { message: 'Artist not found' };
+    }
+    return updatedArtist;
+  }
 }
