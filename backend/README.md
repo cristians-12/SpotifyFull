@@ -20,24 +20,8 @@ Este es un clon de la API de Spotify, que permite gestionar artistas en una base
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/tu_usuario/spotify-clone-api.git
-# Spotify Clone API
 
-Este es un clon de la API de Spotify, que permite gestionar artistas en una base de datos MongoDB. Puedes crear, leer, actualizar y eliminar artistas.
 
-## Tabla de Contenidos
-
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [Endpoints](#endpoints)
-- [Ejemplos de Solicitudes](#ejemplos-de-solicitudes)
-- [Contribución](#contribución)
-- [Licencia](#licencia)
-
-## Instalación
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/tu_usuario/spotify-clone-api.git
 
 
 | Método | Endpoint                   | Descripción                    |
