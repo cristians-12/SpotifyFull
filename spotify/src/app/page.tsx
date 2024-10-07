@@ -3,12 +3,13 @@
 import { useEffect } from "react";
 import useFetchs from "./hooks/useFetchs";
 import ArtistCard from "./includes/ArtistCard";
+import AudioPlayer from "./components/AudioPlayer";
 
 export default function Home() {
   const { data } = useFetchs(`${process.env.NEXT_PUBLIC_API_URI}/artists`);
 
   useEffect(() => {
-    console.log(data);
+    console.log(data)
   }, [data]);
 
   return (
@@ -19,8 +20,13 @@ export default function Home() {
           data.map((artist) => (
             <ArtistCard key={artist.id} artist={artist} />
           ))
-        ) : null}
+        ) : (
+          <>
+            <h1>Cargando..</h1>
+          </>
+        )}
       </ul>
+        <AudioPlayer/>
     </>
   )
 }

@@ -3,6 +3,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
+// import dynamic from 'next/dynamic';
+
+// const AudioPlayer = dynamic(() => import('../app/components/AudioPlayer'), { ssr: false });
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +34,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-
         <>
           <NavBar />
           <div className="flex pt-16 gap-5">

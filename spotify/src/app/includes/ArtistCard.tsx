@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import { Artist } from "../types";
 import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
@@ -21,7 +22,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: hover ? 1 : 0 }}
                 transition={{ duration: 0.1 }}
-                className="bg-[#3AE175] w-fit px-4 py-4 absolute right-5 bottom-24 rounded-full"
+                className={`bg-[#3AE175] w-fit px-4 py-4 absolute right-5 bottom-24 rounded-full hover:scale-110`}
             >
                 <FaPlay size={30} />
             </motion.div>
