@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ArtistsService } from './artists.service';
 import { CreateArtist } from './dto/create-artist.request';
 
@@ -14,5 +14,15 @@ export class ArtistsController {
   @Post()
   async createArtist(@Body() createArtistDto: CreateArtist) {
     return this.artistsService.createArtist(createArtistDto);
+  }
+
+  @Get(':limit')
+  async getSomeArtists(@Param('limit') limit: number) {
+    return this.artistsService.getSomeArtists(limit);
+  }
+
+  @Get('id/:id')
+  async getArtistById(@Param('id') id: string) {
+    return this.artistsService.getArtistById(id);
   }
 }

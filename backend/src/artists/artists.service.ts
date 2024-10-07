@@ -23,4 +23,24 @@ export class ArtistsService {
   async getAllArtists() {
     return await this.artistModel.find().exec();
   }
+
+  async getSomeArtists(limit: number) {
+    return await this.artistModel.find().limit(limit).exec();
+  }
+
+  async getArtistById(id: string) {
+    const artist = await this.artistModel.findById(id).exec();
+    if (!artist) {
+      return { message: 'Artist not found' };
+    }
+    return artist;
+  }
+
+  async deleteArtist(id: string) {
+    const artist = await this.artistModel.findByIdAndDelete(id).exec();
+    if (!artist) {
+      return { message: 'Artist not found' };
+    }
+    return { message: 'Artist deleted.' };
+  }
 }
