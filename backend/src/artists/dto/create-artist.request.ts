@@ -1,18 +1,18 @@
-import { IsNotEmpty, IsString, IsArray, ValidateNested } from 'class-validator';
+// import { IsNotEmpty, IsString, IsArray, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import { Album } from '../schema/album.schema';
 
 export class CreateArtist {
-  @IsNotEmpty()
-  @IsString()
+  // @IsNotEmpty()
+  // @IsString()
   name: string;
 
-  @IsArray()
-  @ValidateNested({ each: true }) 
+  // @IsArray()
+  // @ValidateNested({ each: true }) 
   @Type(() => Album) 
   albums: Album[];
 
-  @IsString()
-  @IsNotEmpty()
+  // @IsString()
+  // @IsNotEmpty()
   image: string;
 }
