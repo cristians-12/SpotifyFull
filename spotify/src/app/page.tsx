@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <h2 className="font-bold">Artistas:</h2>
-      <ul className="mt-5 flex">
+      <ul className="mt-5 flex w-screen overflow-x-scroll">
         {data && data.length > 0 ? (
           data.map((artist) => (
             <ArtistCard key={artist.id} artist={artist} />
