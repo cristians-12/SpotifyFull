@@ -23,6 +23,7 @@ Este es un clon de la API de Spotify, que permite gestionar artistas en una base
 
 
 
+## Endpoints
 
 | Método | Endpoint                   | Descripción                    |
 |--------|----------------------------|--------------------------------|
