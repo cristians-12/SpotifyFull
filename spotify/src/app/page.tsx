@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <h2 className="font-bold">Artistas escuchados:</h2>
+      <h2 className="font-bold">Artistas:</h2>
       <ul className="mt-5 flex">
         {data && data.length > 0 ? (
           data.map((artist) => (
