@@ -7,3 +7,9 @@ export interface Artist{
 export interface ArtistCard extends Artist{
     key: string;
 }
+
+export interface Album{
+    _id:string;
+    image:string;
+    title:string;
+}
