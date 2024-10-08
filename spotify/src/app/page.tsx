@@ -18,7 +18,7 @@ export default function Home() {
       <ul className="mt-5 flex lg:w overflow-x-scroll lg:overflow-auto">
         {data && data.length > 0 ? (
           data.map((artist) => (
-            <ArtistCard key={artist.id} artist={artist} />
+            <ArtistCard key={artist._id} artist={artist} />
           ))
         ) : (
           <>
