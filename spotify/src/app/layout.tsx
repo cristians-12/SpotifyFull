@@ -37,9 +37,9 @@ export default function RootLayout({
       >
         <>
           <NavBar />
-          <div className="flex pt-16 gap-5">
+          <div className="flex pt-16 gap-3">
             <SideBar />
-            <div>
+            <div className="lg:w-full">
               {children}
             </div>
           </div>
