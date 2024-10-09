@@ -2,20 +2,20 @@
 
 import { useEffect, useState } from "react";
 import AudioPlayer from "@/app/components/AudioPlayer";
-import { Album } from "@/app/types";
+import { Album, Artist } from "@/app/types";
 import Image from "next/image";
 
 export default function ArtistPage({ params }: { params: { id: string } }) {
     const { id } = params;
-    const [posts, setPosts] = useState<any>(null);
-    const [loading, setLoading] = useState<boolean>(true); 
+    const [artist, setArtist] = useState<Artist | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const fetchArtistData = async () => {
             try {
                 const data = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/artists/id/${id}`);
                 const result = await data.json();
-                setPosts(result);
+                setArtist(result);
             } catch (error) {
                 console.error("Error fetching artist data", error);
             } finally {
@@ -30,11 +30,11 @@ export default function ArtistPage({ params }: { params: { id: string } }) {
         return <div>Cargando...</div>;
     }
 
-    if (!posts) {
-        return <div>No se encontraron datos del artista.</div>;
+    if (!artist) {
+        return <div>No se encontró información del artista.</div>;
     }
 
-    const { poster, albums, name } = posts;
+    const { poster, albums, name } = artist;
 
     return (
         <>

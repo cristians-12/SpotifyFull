@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import useFetchs from "./hooks/useFetchs";
 import ArtistCard from "./includes/ArtistCard";
-import AudioPlayer from "./components/AudioPlayer";
 
 export default function Home() {
   const { data } = useFetchs(`${process.env.NEXT_PUBLIC_API_URI}/artists`);

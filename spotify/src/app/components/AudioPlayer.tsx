@@ -15,15 +15,15 @@ export default function AudioPlayer() {
 
 
     return (
-        <div className="fixed lg:bottom-0 bottom-[0%] w-full flex py-3 px-3 items-center justify-between bg-black left-0">
-            <audio className="" controls ref={audio}>
+        <div className="fixed lg:bottom-0 bottom-[0%] w-full flex py-2 px-3 items-center justify-between bg-black left-0">
+            <audio className="hidden" controls ref={audio}>
                 <source src="https://archive.org/download/y-2mate.com-alejo-feid-robi-pantysito_202208/y2mate.com%20-%20Alejo%20Feid%20Robi%20%20Pantysito.mp3" />
             </audio>
             <div>
                 imagen
 
             </div>
-            <div className="w-[30%] flex flex-col gap-3 items-center">
+            <div className="w-[30%] flex flex-col gap-1 items-center">
                 <div className="flex items-center gap-5">
                     <div className="cursor-pointer hidden lg:block">
                         <FaRandom size={25} />
@@ -47,10 +47,10 @@ export default function AudioPlayer() {
                         <CiRepeat size={25} />
                     </div>
                 </div>
-                <div className="h-[2px] w-full bg-gray-500 hidden lg:block">
-                </div>
-                <div className="flex justify-between w-full">
+                <div className="flex w-full items-center gap-5 text-gray-500 font-bold">
                     <span>0:00</span>
+                    <div className="h-[2px] w-full bg-gray-500 hidden lg:block">
+                    </div>
                     <span>{currentTime}</span>
                 </div>
             </div>
