@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import AudioPlayer from "@/app/components/AudioPlayer";
 import { Album, Artist } from "@/app/types";
 import Image from "next/image";
-import ArtistCard from "@/app/includes/ArtistCard";
 import AlbumCard from "@/app/components/AlbumCard";
 
 export default function ArtistPage({ params }: { params: { id: string } }) {
