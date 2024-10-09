@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import AudioPlayer from "@/app/components/AudioPlayer";
 import { Album, Artist } from "@/app/types";
 import Image from "next/image";
+import ArtistCard from "@/app/includes/ArtistCard";
+import AlbumCard from "@/app/components/AlbumCard";
 
 export default function ArtistPage({ params }: { params: { id: string } }) {
     const { id } = params;
@@ -40,15 +42,16 @@ export default function ArtistPage({ params }: { params: { id: string } }) {
         <>
             <div>
                 <h6>Artista verificado:</h6>
-                <Image src={poster} width={100} height={100} alt={`${name}`} className="w-full" />
+                <Image src={poster} width={100} height={100} alt={`${name}`} className="" />
             </div>
             <h4 className="font-bold my-5">Discografía:</h4>
             <ul>
                 {albums && albums.map((album: Album) =>
-                    <li className="w-36 flex flex-col items-center" key={album._id}>
-                        <Image src={album.image} width={100} height={100} alt={`${album.title}`} className="w-full" />
-                        <span>{album.title}</span>
-                    </li>
+                    // <li className="w-36 flex flex-col items-center" key={album._id}>
+                    //     <Image src={album.image} width={100} height={100} alt={`${album.title}`} className="w-full" />
+                    //     <span>{album.title}</span>
+                    // </li>
+                    <AlbumCard key={album._id} album={album} />
                 )}
             </ul>
             <AudioPlayer />
