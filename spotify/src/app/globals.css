@@ -18,12 +18,10 @@ body {
   color: var(--foreground);
   /* background: var(--background); */
   background-color: black;
-
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-*{
+* {
   transition: all ease-in-out 0.2s;
 }
-
-

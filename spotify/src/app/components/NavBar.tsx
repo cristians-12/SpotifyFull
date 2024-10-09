@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { CiSettings } from "react-icons/ci";
 import { IoIosSearch } from "react-icons/io";
 
@@ -7,9 +8,9 @@ export default function NavBar() {
     return (
         <>
             <nav className="flex text-white items-center justify-between px-5 py-2 fixed w-screen bg-black z-30">
-                <figure className="w-10">
+                <Link href={'/'} className="w-10">
                     <Image src={"https://logospng.org/download/spotify/logo-spotify-icon-4096.png"} width={100} height={100} alt="logo" />
-                </figure>
+                </Link>
 
                 <div className="flex w-[35%]">
                     <div className="">

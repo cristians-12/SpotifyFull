@@ -3,16 +3,17 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 
-// const AudioPlayer = dynamic(() => import('../app/components/AudioPlayer'), { ssr: false });
-
+// Carga dinámica del AudioPlayer deshabilitando SSR
+const AudioPlayer = dynamic(() => import('./components/AudioPlayer'), { ssr: false });
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -42,6 +43,8 @@ export default function RootLayout({
               {children}
             </div>
           </div>
+          {/* AudioPlayer cargado solo en el lado del cliente */}
+          <AudioPlayer />
         </>
       </body>
     </html>
