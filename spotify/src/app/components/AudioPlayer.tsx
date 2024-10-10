@@ -1,6 +1,4 @@
-
 'use client'
-// import ReactAudioPlayer from "react-audio-player";
 import { useRef } from "react";
 import { CiRepeat } from "react-icons/ci";
 import { FaRandom } from "react-icons/fa";
@@ -11,8 +9,9 @@ export default function AudioPlayer() {
 
     const audio = useRef<HTMLAudioElement | null>(null)
 
-    const { handlePlay, play, handlePause, currentTime } = useAudioPlayer({ audio });
+    const { handlePlay, play, handlePause, currentTime, duration, duracionn, actualTime } = useAudioPlayer({ audio });
 
+    const progressPercentage = (actualTime / duracionn) * 100 || 0;
 
     return (
         <div className="fixed lg:bottom-0 bottom-[0%] w-full flex py-2 px-3 items-center justify-between bg-black left-0">
@@ -21,7 +20,6 @@ export default function AudioPlayer() {
             </audio>
             <div>
                 imagen
-
             </div>
             <div className="w-[30%] flex flex-col gap-1 items-center">
                 <div className="flex items-center gap-5">
@@ -47,11 +45,15 @@ export default function AudioPlayer() {
                         <CiRepeat size={25} />
                     </div>
                 </div>
-                <div className="flex w-full items-center gap-5 text-gray-500 font-bold">
-                    <span>0:00</span>
-                    <div className="h-[2px] w-full bg-gray-500 hidden lg:block">
-                    </div>
+                <div className="w-full items-center hidden lg:flex gap-3 text-gray-500 font-normal">
                     <span>{currentTime}</span>
+                    <div className="h-[2.5px] w-full bg-gray-500 hidden lg:block relative">
+                        <div
+                            className="h-full bg-white absolute"
+                            style={{ width: `${progressPercentage}%` }}>
+                        </div>
+                    </div>
+                    <span>{duration}</span>
                 </div>
             </div>
             <div className="hidden lg:flex">

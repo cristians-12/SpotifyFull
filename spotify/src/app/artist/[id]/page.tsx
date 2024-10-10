@@ -5,11 +5,20 @@ import AudioPlayer from "@/app/components/AudioPlayer";
 import { Album, Artist } from "@/app/types";
 import Image from "next/image";
 import AlbumCard from "@/app/components/AlbumCard";
+import Loader from "@/app/components/Loader";
+// import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+//     title: `artist | Spotify clone`,
+//     description: "Clon de Spotify realizado por cristians-12",
+//   };
 
 export default function ArtistPage({ params }: { params: { id: string } }) {
     const { id } = params;
     const [artist, setArtist] = useState<Artist | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+
+
 
     useEffect(() => {
         const fetchArtistData = async () => {
@@ -28,7 +37,7 @@ export default function ArtistPage({ params }: { params: { id: string } }) {
     }, [id]);
 
     if (loading) {
-        return <div>Cargando...</div>;
+        return <Loader/>;
     }
 
     if (!artist) {
