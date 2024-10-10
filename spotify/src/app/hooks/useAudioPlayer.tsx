@@ -21,6 +21,17 @@ const useAudioPlayer = ({ audio }: { audio: MutableRefObject<HTMLAudioElement | 
         }
     };
 
+    const handlePosition = (position: number) => {
+        if (audio.current) {
+            audio.current.currentTime = position;
+            setActualTime(position); 
+            const currentMinutes = Math.floor(position / 60);
+            const currentSeconds = Math.floor(position % 60).toString().padStart(2, '0');
+            setCurrentTime(`${currentMinutes}:${currentSeconds}`); 
+        }
+    };
+
+
     useEffect(() => {
         const audioElement = audio.current;
 
@@ -58,7 +69,8 @@ const useAudioPlayer = ({ audio }: { audio: MutableRefObject<HTMLAudioElement | 
         currentTime,
         duration,
         duracionn,
-        actualTime
+        actualTime,
+        handlePosition
     };
 };
 

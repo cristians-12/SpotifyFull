@@ -9,7 +9,7 @@ export default function AudioPlayer() {
 
     const audio = useRef<HTMLAudioElement | null>(null)
 
-    const { handlePlay, play, handlePause, currentTime, duration, duracionn, actualTime } = useAudioPlayer({ audio });
+    const { handlePlay, play, handlePause, currentTime, duration, duracionn, actualTime, handlePosition } = useAudioPlayer({ audio });
 
     const progressPercentage = (actualTime / duracionn) * 100 || 0;
 
@@ -47,7 +47,12 @@ export default function AudioPlayer() {
                 </div>
                 <div className="w-full items-center hidden lg:flex gap-3 text-gray-500 font-normal">
                     <span>{currentTime}</span>
-                    <div className="h-[2.5px] w-full bg-gray-500 hidden lg:block relative">
+                    <div onClick={(e) => {
+                        const rect = e.currentTarget.getBoundingClientRect(); // Obtiene las dimensiones y posición del elemento
+                        const clickPosition = e.clientX - rect.left; // Posición del clic dentro de la barra
+                        const newTime = (clickPosition / rect.width) * duracionn; // Calcula la nueva posición en el audio
+                        handlePosition(newTime); // Ajusta la posición del audio
+                    }} className="h-[2.5px] w-full cursor-pointer bg-gray-500 hidden lg:block relative">
                         <div
                             className="h-full bg-white absolute"
                             style={{ width: `${progressPercentage}%` }}>
