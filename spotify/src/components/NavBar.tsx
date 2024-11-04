@@ -1,9 +1,11 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { CiSettings } from "react-icons/ci";
 import { IoIosSearch } from "react-icons/io";
 
 export default function NavBar() {
+
 
     return (
         <>
