@@ -1,6 +1,6 @@
 "use client";
+import { Artist } from "@/app/types";
 import { useEffect, useState } from "react";
-import { Artist } from "../types";
 
 const useFetchs = (url: string) => {
     //   const [error, setError] = useState(null);
