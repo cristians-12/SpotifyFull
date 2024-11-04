@@ -10,6 +10,7 @@ import {
 } from "react-icons/io";
 import useAudioPlayer from "../hooks/useAudioPlayer";
 import useUserMusic from "@/store/userMusicStore";
+import Image from "next/image";
 
 export default function AudioPlayer() {
   const audio = useRef<HTMLAudioElement | null>(null);
@@ -24,8 +25,8 @@ export default function AudioPlayer() {
     actualTime,
     handlePosition,
   } = useAudioPlayer({ audio });
-  
-  const {track} = useUserMusic();
+
+  const { track } = useUserMusic();
 
   const progressPercentage = (actualTime / duracionn) * 100 || 0;
 
@@ -34,7 +35,15 @@ export default function AudioPlayer() {
       <audio className="hidden" controls ref={audio}>
         <source src="https://archive.org/download/y-2mate.com-alejo-feid-robi-pantysito_202208/y2mate.com%20-%20Alejo%20Feid%20Robi%20%20Pantysito.mp3" />
       </audio>
-      <div>{track.artist_name}</div>
+      <div className="w-20 h-20 overflow-hidden text-white">
+        <Image
+          src={track.album_cover_url}
+          width={100}
+          height={100}
+          alt={track.album_title}
+        />
+        {track.artist_name}
+      </div>
       <div className="w-[30%] flex flex-col gap-1 items-center">
         <div className="flex items-center gap-5">
           <div className="cursor-pointer hidden lg:block">
