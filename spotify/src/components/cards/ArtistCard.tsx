@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import { Artist } from "../../app/types";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { IoMdPlay } from "react-icons/io";
 import useUserMusic from "@/store/userMusicStore";
+import { Artist } from "@/app/types";
 
 interface ArtistCardProps {
   artist: Artist;
@@ -15,8 +15,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
   const { changeTrack } = useUserMusic();
 
   return (
-    <Link
-      href={`/artist/${artist._id}`}
+    <div
       className="flex relative flex-col justify-center hover:bg-[#5a5a5a83] p-3 lg:pb-10 rounded-xl hover:cursor-pointer"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -50,11 +49,14 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
         />
       </div>
 
-      <h2 className="text-start mt-5 hover:underline hover:cursor-pointer font-bold">
+      <Link
+        href={`/artist/${artist._id}`}
+        className="text-start mt-5 hover:underline hover:cursor-pointer font-bold"
+      >
         {artist.name}
-      </h2>
+      </Link>
       <p className="text-[#606060]">Artist</p>
-    </Link>
+    </div>
   );
 };
 
