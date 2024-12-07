@@ -11,7 +11,9 @@ export class UsersService {
     @InjectModel(User.name) private readonly userModel: Model<User>,
   ) {}
 
-  async findOne(id?: string, email?: string): Promise<ResponseType> {
+  async findOne(query: { id?: string; email?: string }): Promise<ResponseType> {
+    const { id, email } = query;
+
     if (id && Types.ObjectId.isValid(id)) {
       const user = await this.userModel.findById(id);
       if (!user) return { message: 'User not found', data: null };

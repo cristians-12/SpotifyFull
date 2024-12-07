@@ -8,7 +8,7 @@ export class UsersController {
 
   @Get()
   async getUsers(@Query('_id') id?: string, @Query('email') email?: string) {
-    return this.userServices.findOne(id, email);
+    return this.userServices.findOne({ email: email, id: id });
   }
 
   @Post()
