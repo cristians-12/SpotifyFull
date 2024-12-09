@@ -2,17 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 // import dynamic from 'next/dynamic';
-import NavBar from "@/components/NavBar";
-import SideBar from "@/components/SideBar";
 import AudioPlayer from "@/components/AudioPlayer";
-
-// Carga dinámica del AudioPlayer deshabilitando SSR
-
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
+import React from "react";
 
 const satoshi = localFont({
   src: "./fonts/Satoshi-Medium.woff",
@@ -34,11 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${satoshi.variable} antialiased`}>
         <>
-          <NavBar />
-          <div className="flex pt-16 gap-3">
-            <SideBar />
-            <div className="lg:w-full">{children}</div>
-          </div>
+          {/* <div className="flex gap-3"> */}
+          <div className="lg:w-full">{children}</div>
+          {/* </div> */}
           <AudioPlayer />
         </>
       </body>

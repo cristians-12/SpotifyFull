@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
+import { CiSearch } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { IoAlbumsOutline } from "react-icons/io5";
+import { TiPin } from "react-icons/ti";
 
 export default function SideBar() {
   const [click, setClick] = useState<boolean>(false);
@@ -14,19 +16,35 @@ export default function SideBar() {
     >
       <div
         onClick={() => setClick(!click)}
-        className="text-gray-500 font-bold  flex items-center gap-5 hover:scale-105 cursor-pointer"
+        className="text-gray-500 font-bold flex items-center gap-5 hover:scale-105 cursor-pointer"
       >
         <div>
           <IoAlbumsOutline size={25} />
         </div>
         {click ? "Tu biblioteca" : null}
       </div>
-      <div className="flex items-center gap-3">
+      {click ? (
+        <div className="flex justify-between">
+          <div>
+            <CiSearch size={20} className="cursor-pointer" />
+          </div>
+          <p>Recientes</p>
+        </div>
+      ) : null}
+      <figure className={`flex items-center ${click ? "gap-3" : null} w-fit`}>
         <div className="like-gradient p-4 cursor-pointer rounded-lg">
           <FaHeart />
         </div>
-        <div>{click ? "Tus favoritos" : null}</div>
-      </div>
+        <div>
+          <p>{click ? "Tus me gusta" : null}</p>
+          {click ? (
+            <div className="text-gray-500 text-[0.9em] flex gap-2 items-center">
+              <TiPin color="green" size={20} />
+              <span>Playlist</span>
+            </div>
+          ) : null}
+        </div>
+      </figure>
     </div>
   );
 }

@@ -46,6 +46,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
           height={200}
           alt={artist.name}
           className=""
+          priority
         />
       </div>
 
