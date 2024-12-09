@@ -14,7 +14,8 @@ export class UsersService {
   async findOne(query: { id?: string; email?: string }): Promise<ResponseType> {
     const { id, email } = query;
 
-    if (id && Types.ObjectId.isValid(id)) {
+    // if (id && Types.ObjectId.isValid(id)) {
+      if (id) {
       const user = await this.userModel.findById(id);
       if (!user) return { message: 'User not found', data: null };
       return { data: user, message: 'User found' };
