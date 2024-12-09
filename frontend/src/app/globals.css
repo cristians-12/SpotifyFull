@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-satoshi: "Satoshi", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,10 +17,16 @@
 
 body {
   color: var(--foreground);
-  /* background: var(--background); */
-  background-color: black;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  font-family: var(--font-satoshi);
+}
+.like-gradient {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    317deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(74, 17, 242, 1) 63%
+  );
 }
 
 * {

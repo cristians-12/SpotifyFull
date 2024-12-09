@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { CiRepeat } from "react-icons/ci";
+import { CiRepeat, CiVolumeHigh } from "react-icons/ci";
 import { FaRandom } from "react-icons/fa";
 import {
   IoIosPause,
@@ -93,7 +93,14 @@ export default function AudioPlayer() {
           <span>{duration}</span>
         </div>
       </div>
-      <div className="hidden lg:flex">otros iconos</div>
+      <div className="hidden lg:flex">
+        <CiVolumeHigh
+          size={25}
+          style={{
+            strokeWidth: 1.2,
+          }}
+        />
+      </div>
     </div>
   );
 }

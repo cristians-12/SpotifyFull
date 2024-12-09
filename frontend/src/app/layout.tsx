@@ -8,16 +8,16 @@ import AudioPlayer from "@/components/AudioPlayer";
 
 // Carga dinámica del AudioPlayer deshabilitando SSR
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
 
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const satoshi = localFont({
+  src: "./fonts/Satoshi-Medium.woff",
+  variable: "--font-satoshi",
+  weight: "200 400",
 });
 
 export const metadata: Metadata = {
@@ -32,9 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${satoshi.variable} antialiased`}>
         <>
           <NavBar />
           <div className="flex pt-16 gap-3">
