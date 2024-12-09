@@ -7,6 +7,7 @@ import Image from "next/image";
 import Loader from "@/components/Loader";
 import AlbumCard from "@/components/cards/AlbumCard";
 import AudioPlayer from "@/components/AudioPlayer";
+import { MdVerified } from "react-icons/md";
 
 // export const metadata: Metadata = {
 //     title: `artist | Spotify clone`,
@@ -32,7 +33,6 @@ export default function ArtistPage({ params }: { params: { id: string } }) {
         setLoading(false);
       }
     };
-
     fetchArtistData();
   }, [id]);
 
@@ -48,24 +48,26 @@ export default function ArtistPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <div>
-        <h6>Artista verificado:</h6>
+      <div className="h-[20vw] overflow-hidden relative">
+        <div className="absolute z-20 bottom-3 left-5">
+          <div className=" flex items-center gap-2">
+            <MdVerified className="" color="#4CB3FF" />
+            <h6 className=" text-white">Artista verificado</h6>
+          </div>
+          <h2 className="text-[5rem] font-extrabold">{name}</h2>
+        </div>
         <Image
           src={poster}
           width={100}
           height={100}
           alt={`${name}`}
-          className=""
+          className="object-contain w-full blur-lg "
         />
       </div>
       <h4 className="font-bold my-5">Discografía:</h4>
       <ul>
         {albums &&
           albums.map((album: Album) => (
-            // <li className="w-36 flex flex-col items-center" key={album._id}>
-            //     <Image src={album.image} width={100} height={100} alt={`${album.title}`} className="w-full" />
-            //     <span>{album.title}</span>
-            // </li>
             <AlbumCard key={album._id} album={album} />
           ))}
       </ul>

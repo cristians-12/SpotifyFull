@@ -1,3 +1,4 @@
+"use client";
 import useAuthStore from "@/store/authStore";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,19 +36,14 @@ export default function NavBar() {
           </div>
         </div>
 
-        {isLoggedIn ? 
-        (
+        {isLoggedIn ? (
           <div>
-            <Link href={'/profile'}>
-              Ir a mi perfil
-            </Link>
+            <Link href={"/profile"}>Ir a mi perfil</Link>
           </div>
-        ) 
-        : 
-        (
+        ) : (
           <div className="lg:flex gap-5 font-bold hidden items-center">
             <Link
-              href={"auth/register"}
+              href="/auth/register"
               className=" hover:cursor-pointer hover:scale-105"
             >
               Registrate
