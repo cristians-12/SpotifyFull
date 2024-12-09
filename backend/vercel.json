@@ -1,5 +1,5 @@
 {
-  "version": "2",
+  "version": 2,
   "env": {
     "MONGODB_URI": "mongodb+srv://cristiansanchezcasd:BxEbNX9kpNlJ20oY@cluster1.air1b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
   },
