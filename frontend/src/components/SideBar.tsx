@@ -9,8 +9,8 @@ export default function SideBar() {
   return (
     <div
       className={`bg-[#121212] hidden lg:flex ${
-        click ? "w-[25vw]" : "w-fit"
-      } rounded-lg h-screen left-0 p-5 flex-col items-center gap-3`}
+        click ? "w-[25vw]" : "w-fit items-center"
+      } rounded-lg h-screen left-0 p-5 flex-col gap-3`}
     >
       <div
         onClick={() => setClick(!click)}
@@ -21,8 +21,11 @@ export default function SideBar() {
         </div>
         {click ? "Tu biblioteca" : null}
       </div>
-      <div className="like-gradient p-4 cursor-pointer rounded-lg">
-        <FaHeart />
+      <div className="flex items-center gap-3">
+        <div className="like-gradient p-4 cursor-pointer rounded-lg">
+          <FaHeart />
+        </div>
+        <div>{click ? "Tus favoritos" : null}</div>
       </div>
     </div>
   );
