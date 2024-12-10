@@ -5,6 +5,7 @@ import { AuthLoginDto } from './dto/auth-login.request';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from 'src/users/schema/user.schema';
 import { Model } from 'mongoose';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -15,20 +16,18 @@ export class AuthService {
   ) {}
 
   async signIn({ email, password }: AuthLoginDto) {
-    // return password;
     const user = await this.usersService.findOne({ email });
     if (!user.data || user.data?.password !== password) {
-      // throw new UnauthorizedException('Invalid credentials');
       return { message: 'Invalid credentials', success: false };
     }
     if (password === user.data.password) {
       const { password, ...result } = user.data;
       this.jwtService.sign(result);
-      console.log({
+      return {
         message: 'Logged in successfully',
         success: true,
         token: this.jwtService.sign(result),
-      });
+      };
     }
   }
 }
