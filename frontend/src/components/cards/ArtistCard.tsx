@@ -22,11 +22,11 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
       onClick={() =>
         changeTrack({
           id: artist._id,
-          artist_name: artist.name,
-          name: "La plata",
+          artist: artist.name,
+          name: "",
           album_cover_url: artist.image,
-          album_title: "la plata",
-          url: "https://example.com/music.mp3",
+          album_title: "",
+          url: "https://archive.org/download/y-2mate.com-alejo-feid-robi-pantysito_202208/y2mate.com%20-%20Alejo%20Feid%20Robi%20%20Pantysito.mp3",
         })
       }
     >
