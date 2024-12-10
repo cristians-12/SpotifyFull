@@ -11,6 +11,7 @@ import {
 import useAudioPlayer from "../hooks/useAudioPlayer";
 import useUserMusic from "@/store/userMusicStore";
 import Image from "next/image";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 export default function AudioPlayer() {
   const audio = useRef<HTMLAudioElement | null>(null);
@@ -33,17 +34,35 @@ export default function AudioPlayer() {
   return (
     <div className="fixed lg:bottom-0 bottom-[0%] w-full flex py-2 px-3 items-center justify-between bg-black left-0">
       <audio className="hidden" controls ref={audio}>
-        <source src="https://archive.org/download/y-2mate.com-alejo-feid-robi-pantysito_202208/y2mate.com%20-%20Alejo%20Feid%20Robi%20%20Pantysito.mp3" />
+        {/* <source src="https://archive.org/download/y-2mate.com-alejo-feid-robi-pantysito_202208/y2mate.com%20-%20Alejo%20Feid%20Robi%20%20Pantysito.mp3" /> */}
+        <source src={track.url} />
       </audio>
-      <div className="w-20 h-20 overflow-hidden text-white">
-        <Image
-          src={track.album_cover_url}
-          width={100}
-          height={100}
-          alt={track.album_title}
-        />
-        {track.artist_name}
+      <div className="flex justify-between items-center w-[20%]">
+        <div className="flex gap-3 items-center">
+          <figure className="w-20 h-20 overflow-hidden text-white">
+            {track.album_cover_url == "" ? null : (
+              <Image
+                src={track.album_cover_url}
+                width={100}
+                height={100}
+                alt={track.album_title}
+              />
+            )}
+          </figure>
+          <div className="flex flex-col">
+            <span className="text-white text-[1.2rem]">{track.name}</span>
+            <span className="text-gray-500">{track.artist}</span>
+          </div>
+        </div>
+        <figure>
+          {track.name === "" ? null : (
+            <IoAddCircleOutline size={20} className="cursor-pointer" />
+          )}
+        </figure>
       </div>
+
+      {/* primera parte */}
+
       <div className="w-[30%] flex flex-col gap-1 items-center">
         <div className="flex items-center gap-5">
           <div className="cursor-pointer hidden lg:block">

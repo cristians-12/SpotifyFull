@@ -1,3 +1,5 @@
+import { Album } from "@/types/music/album.type";
+
 export interface Artist {
   _id: string;
   name: string;
@@ -8,10 +10,4 @@ export interface Artist {
 
 export interface ArtistCard extends Artist {
   key: string;
-}
-
-export interface Album {
-  _id: string;
-  image: string;
-  title: string;
 }
