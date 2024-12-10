@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-import { Album, Artist } from "@/app/types";
+import { Artist } from "@/app/types";
 import Image from "next/image";
 import Loader from "@/components/Loader";
 import AlbumCard from "@/components/cards/AlbumCard";
 import AudioPlayer from "@/components/AudioPlayer";
 import { MdVerified } from "react-icons/md";
+import { Album } from "@/types/music/album.type";
 
 // export const metadata: Metadata = {
 //     title: `artist | Spotify clone`,
