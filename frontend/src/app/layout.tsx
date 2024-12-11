@@ -23,6 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="icon"
+          href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1200px-Spotify_logo_without_text.svg.png"
+        />
+      </head>
       <body className={`${satoshi.variable} antialiased`}>
         <>
           {/* <div className="flex gap-3"> */}
