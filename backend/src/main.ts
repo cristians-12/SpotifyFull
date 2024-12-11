@@ -5,15 +5,10 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 async function bootstrap() {
-  console.log('MONGODB_URI:', process.env.MONGODB_URI);
-  console.log('JWT_SECRET:', process.env.JWT_SECRET);
+  // console.log('JWT_SECRET:', process.env.JWT_SECRET);
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: [
-      'http://localhost:3000',
-      'https://c263hlnk-3000.use.devtunnels.ms',
-      'https://spotify-full.vercel.app',
-    ],
+    origin: ['http://localhost:3000', 'https://spotify-full.vercel.app'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Authorization',
     credentials: true,

@@ -6,7 +6,9 @@ import { JwtAuthGuard } from './guards/jwt.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    console.log(process.env.JWT_SECRET);
+  }
 
   @Post('/login')
   @UseGuards(LocalGuard)
@@ -17,7 +19,6 @@ export class AuthController {
   @Get('/status')
   @UseGuards(JwtAuthGuard)
   status(@Req() req: Request) {
-    console.log('status request controller');
-    // console.log(req.user);
+    console.log(req);
   }
 }
