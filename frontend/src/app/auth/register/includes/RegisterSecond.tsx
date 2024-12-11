@@ -6,7 +6,7 @@ import InputPassword from "@/components/auth/InputPassword";
 interface RegisterSecondProps {
   props: {
     setUser: React.Dispatch<
-      React.SetStateAction<UserRegisterCredentials | null>
+      React.SetStateAction<UserRegisterCredentials>
     >;
     user: UserRegisterCredentials | null;
     setSteps: React.Dispatch<React.SetStateAction<number>>;

@@ -8,7 +8,7 @@ import { UserRegisterCredentials } from "@/types/auth/user-register.type";
 
 function AuthPage() {
   const [steps, setSteps] = useState<number>(1);
-  const [user, setUser] = useState<UserRegisterCredentials | null>({
+  const [user, setUser] = useState<UserRegisterCredentials>({
     email: "",
     password: "",
   });
