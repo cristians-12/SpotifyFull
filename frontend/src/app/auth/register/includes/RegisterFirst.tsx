@@ -4,8 +4,8 @@ import { SetStateAction } from "react";
 interface RegisterFirstProps {
   props: {
     setSteps: React.Dispatch<SetStateAction<number>>;
-    setUser: React.Dispatch<SetStateAction<UserRegisterCredentials>>;
-    user: UserRegisterCredentials;
+    setUser: React.Dispatch<SetStateAction<UserRegisterCredentials | null>>;
+    user: UserRegisterCredentials | null;
   };
 }
 
