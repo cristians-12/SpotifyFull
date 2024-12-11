@@ -1,30 +1,49 @@
+import { UserRegisterCredentials } from "@/types/auth/user-register.type";
 import { SetStateAction } from "react";
 
 interface RegisterFirstProps {
-  setSteps: React.Dispatch<SetStateAction<number>>;
+  props: {
+    setSteps: React.Dispatch<SetStateAction<number>>;
+    setUser: React.Dispatch<SetStateAction<UserRegisterCredentials>>;
+    user: UserRegisterCredentials;
+  };
 }
 
 export default function RegisterFirst({
-  setSteps,
+  props,
 }: RegisterFirstProps): JSX.Element {
+  const { setSteps, setUser, user } = props;
+
   return (
     <div className="w-full flex justify-center flex-col items-center">
       <p className="text-[3rem] text-center font-bold w-[30%]">
         Regístrate para empezar a escuchar contenido
       </p>
       <div className="flex flex-col lg:w-[35%] mt-10">
-        <label htmlFor="email">Direccion de email</label>
+        <label htmlFor="email">Dirección de email</label>
         <input
-          type="text"
+          type="email"
           id="email"
           placeholder="nombre@dominio.com"
           className="bg-transparent border border-white px-3 py-2 rounded-md"
+          onChange={(e) => {
+            setUser({
+              email: e.target.value,
+              password: user.password,
+            });
+          }}
         />
         <p className="text-[#3AE376] underline my-2">
           Usar el número de teléfono.
         </p>
         <button
-          onClick={() => setSteps((steps) => steps + 1)}
+          onClick={() => {
+            if (!user.email || user.email.trim() === "") {
+              alert("Por favor, complete los campos");
+              return;
+            }
+            setSteps((steps) => steps + 1);
+          }}
           className="bg-[#3AE376] text-black rounded-xl py-2 font-bold my-4"
         >
           Siguiente
