@@ -1,45 +1,45 @@
-"use client";
+// "use client";
 
-import { useEffect, useState } from "react";
-
-import { Artist } from "@/app/types";
 import Image from "next/image";
-import Loader from "@/components/Loader";
 import AlbumCard from "@/components/cards/AlbumCard";
 import AudioPlayer from "@/components/AudioPlayer";
 import { MdVerified } from "react-icons/md";
 import { Album } from "@/types/music/album.type";
+import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//     title: `artist | Spotify clone`,
-//     description: "Clon de Spotify realizado por cristians-12",
-//   };
+const getArtist = async (id: string) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URI}/artists/id/${id}`
+  );
+  return res.json();
+};
 
-export default function ArtistPage({ params }: { params: { id: string } }) {
+export default async function ArtistPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const { id } = params;
-  const [artist, setArtist] = useState<Artist | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    const fetchArtistData = async () => {
-      try {
-        const data = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URI}/artists/id/${id}`
-        );
-        const result = await data.json();
-        setArtist(result);
-      } catch (error) {
-        console.error("Error fetching artist data", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchArtistData();
-  }, [id]);
+  const artistData = getArtist(id);
+  const [artist] = await Promise.all([artistData]);
 
-  if (loading) {
-    return <Loader />;
-  }
+  // const [artist, setArtist] = useState<Artist | null>(null);
+
+  // useEffect(() => {
+  //   const fetchArtistData = async () => {
+  //     try {
+  //       const data = await fetch(
+  //         `${process.env.NEXT_PUBLIC_API_URI}/artists/id/${id}`
+  //       );
+  //       const result = await data.json();
+  //       setArtist(result);
+  //     } catch (error) {
+  //       console.error("Error fetching artist data", error);
+  //     }
+  //   };
+  //   fetchArtistData();
+  // }, [id]);
 
   if (!artist) {
     return <div>No se encontró información del artista.</div>;
@@ -49,7 +49,7 @@ export default function ArtistPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <div className="h-[20vw] overflow-hidden relative">
+      <div className="lg:h-[20vw] w-full overflow-hidden relative">
         <div className="absolute z-20 bottom-3 left-5">
           <div className=" flex items-center gap-2">
             <MdVerified className="" color="#4CB3FF" />
@@ -76,3 +76,8 @@ export default function ArtistPage({ params }: { params: { id: string } }) {
     </>
   );
 }
+
+export const metadata: Metadata = {
+  title: `Artist | Spotify clone`,
+  description: "Clon de Spotify realizado por cristians-12",
+};

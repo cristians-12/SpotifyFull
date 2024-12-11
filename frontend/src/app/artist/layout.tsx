@@ -9,9 +9,9 @@ export default function ArtistLayout({
   return (
     <>
       <NavBar />
-      <div className="flex pt-16">
+      <div className="flex lg:pt-16 pt-14">
         <SideBar />
-        <div className="lg:w-full">{children}</div>
+        <div className="lg:w-full w-screen">{children}</div>
       </div>
     </>
   );

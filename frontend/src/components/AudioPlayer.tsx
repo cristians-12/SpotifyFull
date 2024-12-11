@@ -37,7 +37,7 @@ export default function AudioPlayer() {
         {/* <source src="https://archive.org/download/y-2mate.com-alejo-feid-robi-pantysito_202208/y2mate.com%20-%20Alejo%20Feid%20Robi%20%20Pantysito.mp3" /> */}
         <source src={track.url} />
       </audio>
-      <div className="flex justify-between items-center w-[20%]">
+      <div className="flex gap-3 justify-between items-center w-[20%]">
         <div className="flex gap-3 items-center">
           <figure className="w-20 h-20 overflow-hidden text-white">
             {track.album_cover_url == "" ? null : (
@@ -49,7 +49,7 @@ export default function AudioPlayer() {
               />
             )}
           </figure>
-          <div className="flex flex-col">
+          <div className=" flex-col hidden lg:flex">
             <span className="text-white text-[1.2rem]">{track.name}</span>
             <span className="text-gray-500">{track.artist}</span>
           </div>
