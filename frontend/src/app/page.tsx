@@ -1,13 +1,19 @@
-"use client";
 import Loader from "@/components/Loader";
-import useFetchs from "../hooks/useFetchs";
-import ArtistCard from "../components/cards/ArtistCard";
 import NavBar from "@/components/NavBar";
 import SideBar from "@/components/SideBar";
 import { Suspense } from "react";
+import { ArtistCard } from "@/components";
+import { Artist } from "./types";
 
-export default function Home() {
-  const { data } = useFetchs(`${process.env.NEXT_PUBLIC_API_URI}/artists`);
+const getInitialArtists = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/artists`);
+  const data = await res.json();
+  return data;
+};
+
+export default async function Home() {
+  // const { data } = useFetchs(`${process.env.NEXT_PUBLIC_API_URI}/artists`);
+  const data: Artist[] = await getInitialArtists();
 
   return (
     <>
@@ -27,7 +33,7 @@ export default function Home() {
               </>
             )} */}
             <Suspense fallback={<Loader />}>
-              {data?.map((artist) => (
+              {data.map((artist: Artist) => (
                 <ArtistCard key={artist._id} artist={artist} />
               ))}
             </Suspense>

@@ -1,11 +1,11 @@
 // "use client";
 
 import Image from "next/image";
-import AlbumCard from "@/components/cards/AlbumCard";
 import AudioPlayer from "@/components/AudioPlayer";
 import { MdVerified } from "react-icons/md";
 import { Album } from "@/types/music/album.type";
 import { Metadata } from "next";
+import { AlbumCard } from "@/components";
 
 const getArtist = async (id: string) => {
   const res = await fetch(

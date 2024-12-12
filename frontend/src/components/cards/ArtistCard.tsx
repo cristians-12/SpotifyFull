@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -10,7 +11,7 @@ interface ArtistCardProps {
   artist: Artist;
 }
 
-const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
+export const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
   const [hover, setHover] = useState<boolean>(false);
   const { changeTrack } = useUserMusic();
 
@@ -61,4 +62,4 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
   );
 };
 
-export default ArtistCard;
+// export default ArtistCard;

@@ -13,7 +13,7 @@ interface ArtistCardProps {
   album: Album;
 }
 
-const AlbumCard: React.FC<ArtistCardProps> = ({ album }) => {
+export const AlbumCard: React.FC<ArtistCardProps> = ({ album }) => {
   const [hover, setHover] = useState<boolean>(false);
 
   const { changeTrack } = useUserMusic();
@@ -53,4 +53,4 @@ const AlbumCard: React.FC<ArtistCardProps> = ({ album }) => {
   );
 };
 
-export default AlbumCard;
+// export default AlbumCard;

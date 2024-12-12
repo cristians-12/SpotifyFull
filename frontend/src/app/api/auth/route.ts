@@ -22,4 +22,8 @@ const POST = async (req: NextRequest) => {
   }
 };
 
-export { POST };
+const GET = () => {
+  return NextResponse.json({ message: "Hola!!" }, { status: 200 });
+};
+
+export { POST, GET };
