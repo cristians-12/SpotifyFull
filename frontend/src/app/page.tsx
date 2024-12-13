@@ -6,7 +6,9 @@ import { ArtistCard } from "@/components";
 import { Artist } from "./types";
 
 const getInitialArtists = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/artists`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/artists`, {
+    next: { revalidate: 60 },
+  });
   const data = await res.json();
   return data;
 };
@@ -14,6 +16,7 @@ const getInitialArtists = async () => {
 export default async function Home() {
   // const { data } = useFetchs(`${process.env.NEXT_PUBLIC_API_URI}/artists`);
   const data: Artist[] = await getInitialArtists();
+  console.log(data);
 
   return (
     <>
