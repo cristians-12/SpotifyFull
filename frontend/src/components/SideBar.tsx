@@ -1,21 +1,31 @@
 "use client";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { IoAlbumsOutline } from "react-icons/io5";
 import { TiPin } from "react-icons/ti";
 
-export default function SideBar() {
+interface SideBarProps {
+  setMove?: React.Dispatch<SetStateAction<boolean>>;
+  move?: boolean;
+}
+
+export const SideBar = ({ setMove, move }: SideBarProps) => {
   const [click, setClick] = useState<boolean>(false);
 
   return (
     <div
-      className={`bg-[#121212] hidden lg:flex ${
+      className={`bg-[#121212] hidden lg:flex fixed ${
         click ? "w-[25vw]" : "w-fit items-center"
       } rounded-lg h-screen left-0 p-5 flex-col gap-3`}
     >
       <div
-        onClick={() => setClick(!click)}
+        onClick={() => {
+          setClick(!click);
+          if (setMove) {
+            setMove(!move);
+          }
+        }}
         className="text-gray-500 font-bold flex items-center gap-5 hover:scale-105 cursor-pointer"
       >
         <div>
@@ -47,4 +57,4 @@ export default function SideBar() {
       </figure>
     </div>
   );
-}
+};

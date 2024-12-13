@@ -1,5 +1,5 @@
+import { SideBar } from "@/components";
 import NavBar from "@/components/NavBar";
-import SideBar from "@/components/SideBar";
 
 export default function ArtistLayout({
   children,
@@ -9,7 +9,7 @@ export default function ArtistLayout({
   return (
     <>
       <NavBar />
-      <div className="flex lg:pt-16 pt-14">
+      <div className="flex lg:pt-16 pt-14 lg:ps-24">
         <SideBar />
         <div className="lg:w-full w-screen">{children}</div>
       </div>
