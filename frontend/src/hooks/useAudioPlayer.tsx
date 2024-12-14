@@ -82,8 +82,10 @@ const useAudioPlayer = ({
   //use effect para cambiar el src del elemento de acuerdo al track y audio
   useEffect(() => {
     if (audio.current && track.url) {
+      audio.current.pause();
       audio.current.src = track.url;
       audio.current.load();
+      setPlay(false);
     }
   }, [track, audio]);
 

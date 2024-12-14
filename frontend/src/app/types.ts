@@ -8,6 +8,6 @@ export interface Artist {
   albums: Album[];
 }
 
-export interface ArtistCard extends Artist {
-  key: string;
-}
+// export interface ArtistCard extends Artist {
+//   key: string;
+// }
