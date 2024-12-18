@@ -1,5 +1,4 @@
 import Image from "next/image";
-import AudioPlayer from "@/components/AudioPlayer";
 import { MdVerified } from "react-icons/md";
 import { Album } from "@/types/music/album.type";
 import { AlbumCard } from "@/components";
