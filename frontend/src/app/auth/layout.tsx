@@ -13,7 +13,7 @@ export default function AuthLayout({
 }) {
   return (
     <div className={`${satoshi.variable} antialiased`}>
-      <main>{children}</main> {/* Solo el contenido sin header/footer global */}
+      <main>{children}</main>
     </div>
   );
 }

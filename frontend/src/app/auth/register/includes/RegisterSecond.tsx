@@ -5,9 +5,7 @@ import InputPassword from "@/components/auth/InputPassword";
 
 interface RegisterSecondProps {
   props: {
-    setUser: React.Dispatch<
-      React.SetStateAction<UserRegisterCredentials>
-    >;
+    setUser: React.Dispatch<React.SetStateAction<UserRegisterCredentials>>;
     user: UserRegisterCredentials | null;
     setSteps: React.Dispatch<React.SetStateAction<number>>;
     steps: number;
@@ -34,7 +32,7 @@ export default function RegisterSecond({ props }: RegisterSecondProps) {
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const password = e.target.value;
 
-    setUser({ password, email: user?.email ?? null });
+    setUser({ password, email: user?.email ?? null, name: user?.name ?? null });
     validatePassword(password);
   };
 
@@ -85,7 +83,18 @@ export default function RegisterSecond({ props }: RegisterSecondProps) {
             )}
             10 caracteres
           </figure>
-          <button className="bg-[var(--principal)] text-black w-full mt-5 py-3 rounded-full font-bold">
+          <button
+            className="bg-[var(--principal)] text-black w-full mt-5 py-3 rounded-full font-bold"
+            onClick={() => {
+              if (
+                validation.hasMinLength &&
+                validation.hasLetter &&
+                validation.hasNumberOrSpecialChar
+              ) {
+                setSteps(steps + 1);
+              }
+            }}
+          >
             Siguiente
           </button>
         </div>

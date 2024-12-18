@@ -26,6 +26,7 @@ export default function RegisterFirst({
           id="email"
           placeholder="nombre@dominio.com"
           className="bg-transparent border border-white px-3 py-2 rounded-md"
+          value={user.email ?? undefined}
           onChange={(e) => {
             setUser({
               email: e.target.value,
@@ -39,7 +40,6 @@ export default function RegisterFirst({
         <button
           onClick={() => {
             if (!user.email || user.email.trim() === "") {
-              
               return;
             }
             setSteps((steps) => steps + 1);

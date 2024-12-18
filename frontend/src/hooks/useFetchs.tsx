@@ -1,26 +1,30 @@
 "use client";
-import { Artist } from "@/app/types";
-import { useEffect, useState } from "react";
 
-const useFetchs = (url: string) => {
-  //   const [error, setError] = useState(null);
-  const [data, setData] = useState<Artist[] | null>(null);
+import { useState } from "react";
 
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_AUTH_KEY}`,
-      },
-    };
+interface OptionsFetch extends RequestInit {
+  headers?: HeadersInit;
+}
 
-    fetch(url, options)
-      .then((response) => response.json())
-      .then((response) => setData(response));
-  }, [url]);
+const useFetchs = () => {
+  const [data, setData] = useState(null);
 
-  return { data };
+  const fetchData = async (url: string, options?: OptionsFetch) => {
+    try {
+      const response = await fetch(url, options ?? {});
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const result = await response.json();
+      setData(result);
+      return result; // Opcional
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error; // Opcional: para que el error pueda ser manejado externamente
+    }
+  };
+
+  return { data, fetchData };
 };
 
 export default useFetchs;
