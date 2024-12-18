@@ -31,6 +31,7 @@ export default function RegisterFirst({
             setUser({
               email: e.target.value,
               password: user.password,
+              name: user?.name ?? null,
             });
           }}
         />
