@@ -39,7 +39,7 @@ export default function RegisterFirst({
         <button
           onClick={() => {
             if (!user.email || user.email.trim() === "") {
-              alert("Por favor, complete los campos");
+              
               return;
             }
             setSteps((steps) => steps + 1);

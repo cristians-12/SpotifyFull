@@ -56,4 +56,14 @@ export class ArtistsService {
     }
     return updatedArtist;
   }
+
+  async addAlbumArtist(id: string, data: any) {
+    const artist = await this.artistModel
+      .findByIdAndUpdate(id, { $push: { albums: data } }, { new: true })
+      .exec();
+    if (!artist) {
+      throw new ConflictException('Artist not found');
+    }
+    return artist;
+  }
 }

@@ -1,10 +1,7 @@
-// "use client";
-
 import Image from "next/image";
 import AudioPlayer from "@/components/AudioPlayer";
 import { MdVerified } from "react-icons/md";
 import { Album } from "@/types/music/album.type";
-import { Metadata } from "next";
 import { AlbumCard } from "@/components";
 
 const getArtist = async (id: string) => {
@@ -15,6 +12,22 @@ const getArtist = async (id: string) => {
   return res.json();
 };
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const artist = await getArtist(params.id);
+
+  if (!artist) {
+    return {
+      title: "Artista no encontrado | Spotify clone",
+      description: "No se encontró información del artista.",
+    };
+  }
+
+  return {
+    title: `${artist.name} | Spotify clone`,
+    description: `Explora la discografía y detalles del artista ${artist.name} en este clon de Spotify.`,
+  };
+}
+
 export default async function ArtistPage({
   params,
 }: {
@@ -22,25 +35,7 @@ export default async function ArtistPage({
 }) {
   const { id } = params;
 
-  const artistData = getArtist(id);
-  const [artist] = await Promise.all([artistData]);
-
-  // const [artist, setArtist] = useState<Artist | null>(null);
-
-  // useEffect(() => {
-  //   const fetchArtistData = async () => {
-  //     try {
-  //       const data = await fetch(
-  //         `${process.env.NEXT_PUBLIC_API_URI}/artists/id/${id}`
-  //       );
-  //       const result = await data.json();
-  //       setArtist(result);
-  //     } catch (error) {
-  //       console.error("Error fetching artist data", error);
-  //     }
-  //   };
-  //   fetchArtistData();
-  // }, [id]);
+  const artist = await getArtist(id);
 
   if (!artist) {
     return <div>No se encontró información del artista.</div>;
@@ -67,18 +62,11 @@ export default async function ArtistPage({
         />
       </div>
       <h4 className="font-bold my-5">Discografía:</h4>
-      <ul>
-        {albums &&
-          albums.map((album: Album) => (
-            <AlbumCard key={album._id} album={album} />
-          ))}
+      <ul className="flex gap-5 overflow-x-scroll lg:overflow-hidden">
+        {albums.map((album: Album) => (
+          <AlbumCard key={album._id} album={album} />
+        ))}
       </ul>
-      <AudioPlayer />
     </>
   );
 }
-
-export const metadata: Metadata = {
-  title: `Artist | Spotify clone`,
-  description: "Clon de Spotify realizado por cristians-12",
-};
